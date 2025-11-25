@@ -6,18 +6,21 @@ void setup() {
   setupMotion();
   setupAlert();
 
-  Serial.println("PIR Motion Detector with LED + Buzzer Started...");
+  Serial.println("PIR Motion Detector");
   delay(1000);
 }
 
 void loop() {
   bool motionDetected = readMotion();
+  unsigned long t = millis();
 
   if (motionDetected) {
-    Serial.println("Motion Detected!");
+    Serial.print(t);
+    Serial.println(" ms - Motion Detected!");
     triggerAlert();
   } else {
-    Serial.println("No Motion Detected!");
+    Serial.print(t);
+    Serial.println(" ms - No Motion Detected!");
     stopAlert();
   }
 
